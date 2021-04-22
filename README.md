@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 
 		sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
-				.locale(KvalifikaSDKLocale.EN)
-				.build();
+			.locale(KvalifikaSDKLocale.EN)
+			.build();
 	 }
 }
 
@@ -84,12 +84,12 @@ public class MainActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_main);
 
 		sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
-				.locale(KvalifikaSDKLocale.EN)
-				.build();
+			.locale(KvalifikaSDKLocale.EN)
+			.build();
 	 }
 
 	 public void onVerificationPress(View view) {
-			sdk.startSession();
+		sdk.startSession();
 	 }
 }
 
@@ -187,11 +187,11 @@ Provide drawable resources.
 ```java
 KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
         .locale(KvalifikaSDKLocale.EN)
-		.logo(R.drawable.logo)
-		.documentIcon(R.drawable.document_icon)
-		.activeFlashIcon(R.drawable.flash_on)
-		.inactiveFlashIcon(R.drawable_flash_off)
-		.cancelIcon(R.drawable.cancel_icon)
+	.logo(R.drawable.logo)
+	.documentIcon(R.drawable.document_icon)
+	.activeFlashIcon(R.drawable.flash_on)
+	.inactiveFlashIcon(R.drawable_flash_off)
+	.cancelIcon(R.drawable.cancel_icon)
         .build();
 ```
 
