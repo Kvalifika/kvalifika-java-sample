@@ -192,7 +192,7 @@ KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
 	.activeFlashIcon(R.drawable.flash_on)
 	.inactiveFlashIcon(R.drawable_flash_off)
 	.cancelIcon(R.drawable.cancel_icon)
-        .build();
+	.build();
 ```
 
 &nbsp;
