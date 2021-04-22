@@ -49,10 +49,10 @@ After that you need to initialize SDK with **your appId and secretKey**.
 
 ```java
 public class MainActivity extends AppCompatActivity {
-     private KvalifikaSDK sdk;
+	private KvalifikaSDK sdk;
 
-	 @Override
-	 protected void onCreate(Bundle savedInstanceState) {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		String appId = "YOU APP ID";
@@ -73,10 +73,10 @@ Call `sdk.startSession()` on button click event
 
 ```java
 public class MainActivity extends AppCompatActivity {
-     private KvalifikaSDK sdk;
+	private KvalifikaSDK sdk;
 
-	 @Override
-	 protected void onCreate(Bundle savedInstanceState) {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		String appId = "YOU APP ID";
@@ -186,7 +186,7 @@ Provide drawable resources.
 
 ```java
 KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
-        .locale(KvalifikaSDKLocale.EN)
+	.locale(KvalifikaSDKLocale.EN)
 	.logo(R.drawable.logo)
 	.documentIcon(R.drawable.document_icon)
 	.activeFlashIcon(R.drawable.flash_on)
