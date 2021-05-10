@@ -21,8 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String appId = "";
-        String secretKey = "";
-        sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
+        sdk = new KvalifikaSDK.Builder(this, appId)
                 .locale(KvalifikaSDKLocale.GE)
                 .build();
 
@@ -33,17 +32,21 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onStart() {
+            public void onStart(@NotNull String sessionId) {
                 Log.d("MainActivity", "started");
             }
 
             @Override
-            public void onFinish(@NotNull String s) {
+            public void onFinish(@NotNull String sessionId) {
                 Log.d("MainActivity", "finished");
             }
 
             @Override
-            public void onError(@NotNull KvalifikaSDKError error) {
+            public void onError(@NotNull KvalifikaSDKError error, String message) {
+                if (error == KvalifikaSDKError.INVALID_APP_ID) {
+                    Log.d("MainActivity", "Invalid App ID");
+                }
+
                 if (error == KvalifikaSDKError.USER_CANCELLED) {
                     Toast.makeText(getApplicationContext(), "User cancelled", Toast.LENGTH_LONG).show();
                 }
@@ -70,6 +73,18 @@ public class MainActivity extends AppCompatActivity {
 
                 if (error == KvalifikaSDKError.REVERSE_PORTRAIT_NOT_ALLOWED) {
                     Toast.makeText(getApplicationContext(), "Reverse portrait is not allowed", Toast.LENGTH_LONG).show();
+                }
+
+                if (error == KvalifikaSDKError.FACE_IMAGES_UPLOAD_FAILED) {
+                    Toast.makeText(getApplicationContext(), "Could not upload face images", Toast.LENGTH_LONG).show();
+                }
+
+                if (error == KvalifikaSDKError.DOCUMENT_IMAGES_UPLOAD_FAILED) {
+                    Toast.makeText(getApplicationContext(), "Could not upload Id card or passport images", Toast.LENGTH_LONG).show();
+                }
+
+                if (error == KvalifikaSDKError.COMPARE_IMAGES_FAILED) {
+                    Toast.makeText(getApplicationContext(), "Could not compare images", Toast.LENGTH_LONG).show();
                 }
 
                 if (error == KvalifikaSDKError.UNKNOWN_INTERNAL_ERROR) {

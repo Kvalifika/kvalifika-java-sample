@@ -33,7 +33,7 @@ To install Kvalifika Android SDK, add following to `build.gradle (Module)` file:
 ```groovy
 dependencies {
   // Insert line below to include our client library as a dependency.
-  implementation 'com.kvalifika:sdk:0.0.6'
+  implementation 'com.kvalifika:sdk:0.0.8'
 }
 ```
 &nbsp;
@@ -56,10 +56,9 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 
 		String appId = "YOU APP ID";
-		String secretKey = "YOUR SECRET KEY";
 		setContentView(R.layout.activity_main);
 
-		sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
+		sdk = new KvalifikaSDK.Builder(this, appId)
 			.locale(KvalifikaSDKLocale.EN)
 			.build();
 	 }
@@ -80,10 +79,9 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 
 		String appId = "YOU APP ID";
-		String secretKey = "YOUR SECRET KEY";
 		setContentView(R.layout.activity_main);
 
-		sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
+		sdk = new KvalifikaSDK.Builder(this, appId)
 			.locale(KvalifikaSDKLocale.EN)
 			.build();
 	 }
@@ -117,17 +115,21 @@ sdk.callback(new KvalifikaSDKCallback() {
     }
 
     @Override
- 	public void onStart() {
+ 	public void onStart(@NotNull String sessionId) {
         Log.d("MainActivity", "started");
     }
 
     @Override
- 	public void onFinish(@NotNull String s) {
+ 	public void onFinish(@NotNull String sessionId) {
         Log.d("MainActivity", "finished");
     }
 
     @Override
  	public void onError(@NotNull KvalifikaSDKError error) {
+        if (error == KvalifikaSDKError.INVALID_APP_ID) {
+            Log.d("MainActivity", "Invalid App ID");
+        }
+
         if (error == KvalifikaSDKError.USER_CANCELLED) {
             Toast.makeText(getApplicationContext(), "User cancelled", Toast.LENGTH_LONG).show();
         }
@@ -156,6 +158,18 @@ sdk.callback(new KvalifikaSDKCallback() {
             Toast.makeText(getApplicationContext(), "Reverse portrait is not allowed", Toast.LENGTH_LONG).show();
         }
 
+        if (error == KvalifikaSDKError.FACE_IMAGES_UPLOAD_FAILED) {
+            Toast.makeText(getApplicationContext(), "Could not upload face images", Toast.LENGTH_LONG).show();
+        }
+
+        if (error == KvalifikaSDKError.DOCUMENT_IMAGES_UPLOAD_FAILED) {
+            Toast.makeText(getApplicationContext(), "Could not upload Id card or passport images", Toast.LENGTH_LONG).show();
+        }
+
+        if (error == KvalifikaSDKError.COMPARE_IMAGES_FAILED) {
+            Toast.makeText(getApplicationContext(), "Could not compare images", Toast.LENGTH_LONG).show();
+        }
+
         if (error == KvalifikaSDKError.UNKNOWN_INTERNAL_ERROR) {
             Toast.makeText(getApplicationContext(), "Unknown error happened", Toast.LENGTH_LONG).show();
         }
@@ -175,6 +189,9 @@ sdk.callback(new KvalifikaSDKCallback() {
 | CAMERA_PERMISSION_DENIED        | Camera is required but access prevented by user settings. |
 | LANDSCAPE_MODE_NOT_ALLOWED        | Verification cancelled because device is in landscape mode. |
 | REVERSE_PORTRAIT_NOT_ALLOWED        | Verification cancelled because device is in reverse portrait mode. |
+| FACE_IMAGES_UPLOAD_FAILED        | Could not upload face images. Internal request failed. |
+| DOCUMENT_IMAGES_UPLOAD_FAILED        | Could not upload ID card or passport images. Internal request failed. |
+| COMPARE_IMAGES_FAILED        | Could not compare images. Internal request failed. |
 | UNKNOWN_INTERNAL_ERROR        | Session failed because of an unhandled internal error. |
 
 &nbsp;
