@@ -125,7 +125,7 @@ sdk.callback(new KvalifikaSDKCallback() {
     }
 
     @Override
- 	public void onError(@NotNull KvalifikaSDKError error) {
+ 	public void onError(@NotNull KvalifikaSDKError error, String message) {
         if (error == KvalifikaSDKError.INVALID_APP_ID) {
             Log.d("MainActivity", "Invalid App ID");
         }
