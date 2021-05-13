@@ -12,6 +12,7 @@ Table of content:
 - [UI Customizations](#ui-customizations)
 	- [Appearance](#appearance)
 	- [Language](#language)
+- [ProGuard](#proguard)
 
 
 &nbsp;
@@ -227,4 +228,11 @@ Supported locales are:
 KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
         .locale(KvalifikaSDKLocale.EN)
         .build();
+```
+
+&nbsp;
+### ProGuard
+If you are using ProGuard in release build add following options:
+```
+-keep class com.facetec.sdk.** { *; }
 ```
