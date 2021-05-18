@@ -183,6 +183,7 @@ sdk.callback(new KvalifikaSDKCallback() {
 ### Error Codes
 | Error Code | Description |
 |---------------------|--------------------------|
+| INVALID_APP_ID        | Kvalifika App Id is incorrect |
 | USER_CANCELLED        | User cancelled before completing verification. |
 | TIMEOUT        | Cancelled due to inactivity. |
 | SESSION_UNSUCCESSFUL        | The Session was not performed successfully |
