@@ -35,7 +35,7 @@ To install Kvalifika Android SDK, add following to `build.gradle (Module)` file:
 ```groovy
 dependencies {
   // Insert line below to include our client library as a dependency.
-  implementation 'com.kvalifika:sdk:0.5.2'
+  implementation 'com.kvalifika:sdk:0.5.3'
 }
 ```
 &nbsp;
@@ -47,7 +47,7 @@ import com.kvalifika.sdk.KvalifikaSDKLocale;
 import com.kvalifika.sdk.KvalifikaSDKCallback;
 import com.kvalifika.sdk.KvalifikaSDKError;
 ```
-After that you need to initialize SDK with **your appId and secretKey**.
+After that you need to initialize SDK with **your appId**.
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -203,7 +203,7 @@ You can customize logo and icons.
 Provide drawable resources.
 
 ```java
-KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
+KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId)
 	.locale(KvalifikaSDKLocale.EN)
 	.logo(R.drawable.logo)
 	.documentIcon(R.drawable.document_icon)
@@ -225,7 +225,7 @@ Supported locales are:
 
 
 ```java
-KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
+KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId)
         .locale(KvalifikaSDKLocale.EN)
         .build();
 ```
@@ -238,7 +238,7 @@ Without specifying mode SDK uses [https://api.kvalifika.com](https://api.kvalifi
 With development mode ON SDK uses [https://apistaging.kvalifika.com](https://apistaging.kvalifika.com)
 
 ```java
-KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
+KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId)
         .development(true)
         .build();
 ```
