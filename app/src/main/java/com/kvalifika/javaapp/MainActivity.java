@@ -83,10 +83,6 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Could not upload Id card or passport images", Toast.LENGTH_LONG).show();
                 }
 
-                if (error == KvalifikaSDKError.COMPARE_IMAGES_FAILED) {
-                    Toast.makeText(getApplicationContext(), "Could not compare images", Toast.LENGTH_LONG).show();
-                }
-
                 if (error == KvalifikaSDKError.UNKNOWN_INTERNAL_ERROR) {
                     Toast.makeText(getApplicationContext(), "Unknown error happened", Toast.LENGTH_LONG).show();
                 }

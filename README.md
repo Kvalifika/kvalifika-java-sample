@@ -12,6 +12,7 @@ Table of content:
 - [UI Customizations](#ui-customizations)
 	- [Appearance](#appearance)
 	- [Language](#language)
+- [Development Mode](#development-mode)
 - [ProGuard](#proguard)
 
 
@@ -226,6 +227,18 @@ Supported locales are:
 ```java
 KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
         .locale(KvalifikaSDKLocale.EN)
+        .build();
+```
+
+&nbsp;
+
+### Development Mode
+Without specifying mode SDK uses api.kvalifika.com.
+With development mode on SDK uses apistaging.kvalifika.com
+
+```java
+KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
+        .development(true)
         .build();
 ```
 
