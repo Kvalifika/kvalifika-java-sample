@@ -233,8 +233,9 @@ KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
 &nbsp;
 
 ### Development Mode
-Without specifying mode SDK uses api.kvalifika.com.
-With development mode on SDK uses apistaging.kvalifika.com
+Without specifying mode SDK uses [https://api.kvalifika.com](https://api.kvalifika.com)
+
+With development mode ON SDK uses [https://apistaging.kvalifika.com](https://apistaging.kvalifika.com)
 
 ```java
 KvalifikaSDK sdk = new KvalifikaSDK.Builder(this, appId, secretKey)
