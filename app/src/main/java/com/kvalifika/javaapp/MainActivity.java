@@ -23,9 +23,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String appId = "";
+        String appId = "YOU APP ID";
         sdk = new KvalifikaSDK.Builder(this, appId)
                 .locale(KvalifikaSDKLocale.GE)
+                .development(true)
                 .build();
 
         sdk.callback(new KvalifikaSDKCallback() {
