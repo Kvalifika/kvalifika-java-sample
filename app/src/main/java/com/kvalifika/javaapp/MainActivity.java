@@ -43,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFinish(@NotNull String sessionId) {
                 Log.d("MainActivity", "finished");
+
+                runOnUiThread(() -> {
+                    Toast.makeText(getApplicationContext(), "Verification finished with session id "+sessionId, Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                });
             }
 
             @Override
