@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
                 runOnUiThread(() -> {
                     Toast.makeText(getApplicationContext(), "Verification finished with session id "+sessionId, Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
                 });
             }
 
