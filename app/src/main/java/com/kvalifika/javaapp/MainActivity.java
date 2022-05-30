@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish(@NotNull String sessionId) {
-                Log.d("MainActivity", "finished");
 
                 runOnUiThread(() -> {
                     Toast.makeText(getApplicationContext(), "Verification finished with session id "+sessionId, Toast.LENGTH_LONG).show();
@@ -112,11 +111,16 @@ public class MainActivity extends AppCompatActivity {
                     runOnUiThread(() ->
                             Toast.makeText(getApplicationContext(), "Unknown error happened", Toast.LENGTH_LONG).show());
                 }
+
+                if (error == KvalifikaSDKError.USER_BLOCKED) {
+                    runOnUiThread(() ->
+                            Toast.makeText(getApplicationContext(), "The number of attempts has expired. User blocked for 5 minutes.", Toast.LENGTH_LONG).show());
+                }
             }
         });
     }
 
     public void onVerificationPress(View view) {
-        sdk.startSession();
+        sdk.startSession(getApplicationContext());
     }
 }
